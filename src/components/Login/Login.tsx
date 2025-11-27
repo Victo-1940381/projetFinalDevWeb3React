@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../context/loginContext";
 import { useNavigate } from 'react-router-dom';
 import  Box  from "@mui/material/Box";
-import { FormControl, Input, InputLabel, TextField } from "@mui/material";
+import { Button, FormControl, Grid, Input, InputLabel, TextField } from "@mui/material";
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -15,6 +15,7 @@ function Login() {
             .then((reussi)=>{
                 if (reussi){
                     setErreur('');
+                
                 }
             })
             .catch(() => setErreur('Login incorrect'));
@@ -24,22 +25,44 @@ function Login() {
             navigate('/');
         }
     }, [isLoggedIn]);
-
+    if(erreur){
+        console.log(erreur);
+    }
     return(
-        <Box display="flex" justifyContent="center">
-           <FormControl variant="standard">
-            <InputLabel htmlFor="email">
-            Email
-            </InputLabel>
-            <TextField id="email" variant="outlined" onChange={(e) => setEmail(e.target.value)}/>
-           </FormControl>
-           <FormControl variant="standard">
-            <InputLabel htmlFor="pass">
-            password
-            </InputLabel>
-            <TextField id="pass" variant="outlined" onChange={(e) => setPassword(e.target.value)}/>
-           </FormControl>
-        </Box> 
+        
+        <Grid container alignItems="center" sx={{backgroundColor:"white",minHeight:'100vh',minWidth:'100vw'}}>
+        <Grid size={12} justifyContent="center"
+            alignItems="center"
+            sx={{width:'100%',
+                display: 'flex',
+                flexDirection: 'column'
+                }}
+        >
+            <TextField id="email"  label="email" variant="outlined" onChange={(e) => setEmail(e.target.value)}/>
+           </Grid>
+           <Grid size={12}justifyContent="center"
+            alignItems="center"
+            sx={{width:'100%',
+                display: 'flex',
+                flexDirection: 'column'
+                }}>
+           
+            <TextField id="pass" label="password" variant="outlined" onChange={(e) => setPassword(e.target.value)}/>
+          
+           </Grid>
+           <Grid size={12}justifyContent="center"
+            alignItems="center"
+            sx={{width:'100%',
+                display: 'flex',
+                flexDirection: 'column'
+                }}>
+            <Button 
+                variant="contained"
+                onClick={() => performLogin()}>
+                    se connecter
+                </Button>
+           </Grid>
+       </Grid> 
     )
 }
 export default Login;

@@ -19,7 +19,7 @@ export default function LoginProvider(props:any){
     const [token, setToken] = useState('');
     async function login(email: string, password:string){
         return axios
-            .post ('http://localhost:3001/api/users/generatetoken', {
+            .post ('http://localhost:3000/api/generatetoken', {
                 "userLogin":{
                 email,
                 password  
@@ -32,6 +32,7 @@ export default function LoginProvider(props:any){
                     setToken(token);
                     return true;
                 } else{
+                    console.log("ca marche")
                     setIsLoggedIn(false);
                     setToken('');
                     return false;
