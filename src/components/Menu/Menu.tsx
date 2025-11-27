@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { LoginContext } from "../../context/loginContext";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AppBar, Box, Button, Toolbar } from "@mui/material";
 
 interface NavItem{
