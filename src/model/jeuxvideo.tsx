@@ -1,5 +1,5 @@
-export type JeuxVideo = {
-    id?: string;
+export interface  JeuxVideo {
+    _id?: string;
     nom: string;
     platforme: string[];
     dateSortieinitial: Date;

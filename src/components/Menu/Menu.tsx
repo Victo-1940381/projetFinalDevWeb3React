@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { LoginContext } from "../../context/loginContext";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { AppBar, Box, Button, Toolbar } from "@mui/material";
 
 interface NavItem{
@@ -9,7 +9,10 @@ interface NavItem{
 }
 
 const navItems: NavItem[] = [
-    {label:"test",path:'/test'}
+    {label:"tous",path:'/liste'},
+    {label:"recherché par genre",path:'/genre'},
+    {label:"recherché par platforme",path:'/platforme'},
+    {label:"ajouter un jeux",path:'/ajout'}
 ]
 function Menu(){
 const {isLoggedIn, logout} = useContext(LoginContext);
@@ -38,8 +41,9 @@ return(
               )
             })}
         </Box>
-        <Box>
-            <Button
+        <Box sx={{display:'flex',justifyContent:'flex-end'}}>
+        <Button
+        sx={{backgroundColor:"red", color:"white"}}
                 onClick={()=>logout()}
         >
             déconnection
@@ -47,6 +51,7 @@ return(
         </Box>
         </Toolbar>
     </AppBar>
+    <Outlet/>
     </>
 )
 }

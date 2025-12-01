@@ -19,7 +19,7 @@ export default function LoginProvider(props:any){
     const [token, setToken] = useState('');
     async function login(email: string, password:string){
         return axios
-            .post ('jeuxvideoapi-d4a9b0azcfgpd7h9.canadacentral-01.azurewebsites.net/api/generatetoken', {
+            .post ('https://jeuxvideoapi-d4a9b0azcfgpd7h9.canadacentral-01.azurewebsites.net/api/generatetoken', {
                 "userLogin":{
                 email,
                 password  

@@ -2,9 +2,8 @@
 import LoginProvider from '../../context/loginContext'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Menu from '../Menu'
-import Test from '../Test'
 import Login from '../Login'
-
+import ListeJeux from '../listeJeux'
 function App() {
 
   return (
@@ -13,7 +12,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path='/' element={<Menu/>}>
-          <Route index element={<Test/>} />
+            <Route path='/liste' element={<ListeJeux/>} />
         </Route>
         <Route path='/login' element={<Login/>} />
       </Routes>
