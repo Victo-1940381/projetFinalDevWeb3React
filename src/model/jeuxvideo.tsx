@@ -1,7 +1,7 @@
 export interface  JeuxVideo {
     _id?: string;
     nom: string;
-    platforme: string[];
+    plateforme: string[];
     dateSortieinitial: Date;
     nombreCopieVendu:number;
     prix:number;

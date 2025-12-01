@@ -1,33 +1,47 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import type { JeuxVideo } from "../../model/jeuxvideo";
-import { FetchjeuxVideo } from "../../service/jeuxvideoservice";
-import { Container, Grid } from "@mui/material";
+import { Button, Container, Grid, Typography } from "@mui/material";
+import { LoginContext } from "../../context/loginContext";
+import { useNavigate } from "react-router-dom";
 
 function ListeJeux() {
     const [listejeux,setListejeux] = useState<JeuxVideo[]>([]);
+    const {isLoggedIn,token} = useContext(LoginContext);
+    //const listeVide: JeuxVideo[] =  [];
+    const navigate = useNavigate();
    useEffect(()=>{
-    FetchjeuxVideo()
-    .then(jeuxfetch => {
-        setListejeux(jeuxfetch);
-    })
-    .catch(error => {
-        console.error("echec de la mise a jour de l'état", error);
-    })
-   
-   },[]);
+    if(!isLoggedIn){
+        navigate('/login');
+    } else{
+        axios.get('https://jeuxvideoapi-d4a9b0azcfgpd7h9.canadacentral-01.azurewebsites.net/api/jeuxvideo/liste',{
+            headers:{
+                Authorization: `Bearer ${token}`,
+            }
+        })
+        .then((response)=> setListejeux(response.data.jeuxvideos));
+    }
+   },[isLoggedIn]);
 
    return (
-    <Container sx={{mt:4}}>
-        <Grid container spacing={4}>
+    
+        <Grid container  justifyContent="center" alignItems="center" flexDirection="column" sx={{backgroundColor:"white",width:"100vw", textAlign:"center",height:"100vh"}}>
+            <Grid size={12}>
+                   <Typography variant="h1"  sx={{color:"black"}}>
+                    Liste des Jeux vidéo
+                   </Typography>
+                </Grid>
             {listejeux.map(jeux => (
-                <Grid >
-                    {jeux.nom}
+                <Grid size={12} justifyItems="center" alignContent="center" sx={{ border:'1px solid black'}}>
+                    <Button   onClick={()=>{navigate(`/UnJeux/${jeux._id}`)}}>
+                        {jeux.nom}
+                    </Button>
+
                 </Grid>
             ))}
             
         </Grid>
-    </Container>
+
         
    )
 }

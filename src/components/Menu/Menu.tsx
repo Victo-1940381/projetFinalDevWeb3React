@@ -9,7 +9,7 @@ interface NavItem{
 }
 
 const navItems: NavItem[] = [
-    {label:"tous",path:'/liste'},
+    {label:"tous",path:'/'},
     {label:"recherché par genre",path:'/genre'},
     {label:"recherché par platforme",path:'/platforme'},
     {label:"ajouter un jeux",path:'/ajout'}
