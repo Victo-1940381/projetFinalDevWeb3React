@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import type { JeuxVideo } from "../../model/jeuxvideo";
-import { Button, Container, Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { LoginContext } from "../../context/loginContext";
 import { useNavigate } from "react-router-dom";
 

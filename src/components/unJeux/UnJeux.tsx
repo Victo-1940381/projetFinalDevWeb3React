@@ -3,7 +3,7 @@ import type { JeuxVideo } from "../../model/jeuxvideo";
 import { LoginContext } from "../../context/loginContext";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { Box, Button, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { Box, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
 
 function UnJeux (){
     const [jeux,setJeux] = useState<JeuxVideo>();
