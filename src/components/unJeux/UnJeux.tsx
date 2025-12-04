@@ -3,7 +3,7 @@ import type { JeuxVideo } from "../../model/jeuxvideo";
 import { LoginContext } from "../../context/loginContext";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { Box, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { Box, Button, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
 
 function UnJeux (){
     const [jeux,setJeux] = useState<JeuxVideo>();
@@ -41,12 +41,17 @@ function UnJeux (){
    return(
     <>
     <Box sx={{ flexGrow: 1,backgroundColor:"white",width:'100%',height:'100%'}}>
-       <Grid container   justifyContent="top" paddingTop={10} >
+ 
+       <Grid container   justifyContent="top" paddingTop={10} >       
+        <Button onClick={()=>{navigate('/')}} sx={{backgroundColor:"red", color:"white"}}>
+                    Retour
+                </Button>
             <Grid size={12} alignItems="center" justifyContent="center"  sx={{textAlign:"center"}}>
                    <Typography variant="h1"  sx={{color:"black"}}>
                    Information du jeu
                    </Typography>
             </Grid>
+         
                 <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>
                    <Typography variant="h4"  sx={{color:"black"}}>
                     nom du jeux:
