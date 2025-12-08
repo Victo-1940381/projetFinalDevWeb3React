@@ -8,6 +8,7 @@ import UnJeux from '../unJeux'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import FormulaireAjout from '../FormulaireAjout'
+import FormulaireModification from '../FormulaireModification'
 function App() {
 
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route index element={<ListeJeux/>} />
             <Route path='/UnJeux/:id' element={<UnJeux/>} />
             <Route path='/ajout' element={<FormulaireAjout/>}/>
+            <Route path='/modif/:id' element={<FormulaireModification/>}/>
         </Route>
         <Route path='/login' element={<Login/>} />
         

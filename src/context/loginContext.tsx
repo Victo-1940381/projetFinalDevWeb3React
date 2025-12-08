@@ -32,7 +32,7 @@ export default function LoginProvider(props:any){
                     setToken(token);
                     return true;
                 } else{
-                    console.log("ca marche")
+                    
                     setIsLoggedIn(false);
                     setToken('');
                     return false;

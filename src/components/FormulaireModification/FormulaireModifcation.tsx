@@ -1,70 +1,39 @@
 import { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../context/loginContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Box, Button, FormControlLabel,Grid, TextField, Typography, Checkbox } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
-import type { JeuxVideo } from "../../model/jeuxvideo";
-import axios from "axios";
 
-function FormulaireAjout(){
+function FormulaireModification(){
 const {isLoggedIn,token} = useContext(LoginContext);
-
+ const { id } = useParams();
 const [nom, setNom] = useState("");
-const [listeplatforme, setListePlatforme] = useState<string[]>([]);
-const [platforme,setPlatforme] = useState("");
-const [datesortie,setDateSortie] = useState<Dayjs>(dayjs);
+const [datesortie,setDateSortie] = useState<Dayjs | null>(dayjs);
 const [nombrecopie,setNombreCopie] = useState(0);
 const [prix,setPrix] = useState(0.0);
-const [listeDev,setListeDev] = useState<string[]>([]);
+const [listeDev,setListeDev] = useState<String[]>([]);
 const [dev,setDev] = useState("");
-const [listeEditeur,setListeediteur] = useState<string[]>([]);
+const [listeEditeur,setListeediteur] = useState<String[]>([]);
 const [editeur,setEditeur]= useState("");
 
-const [listeGenre,setListeGenre] = useState<string[]>([]);
+const [listeGenre,setListeGenre] = useState<String[]>([]);
 const [genre,setGenre]= useState("");
-const [ESRB,setESRB] =useState<string|null>(null);
-const [listeModeJeu,setListeModeJeu] = useState<string[]>([]);
+const [ESRB,setESRB] =useState<String|null|undefined>(null);
+const [listeModeJeu,setListeModeJeu] = useState<String[]>([]);
 const [modeDeJeu,setmodeDeJeu] = useState("");
 const [dureeJeux,setDureeJeux] = useState(0);
 const [disponible,setDisponible] = useState(false);
-const [Metacritic,setMetacritic] = useState<number|null>(null);
+const [Metacritic,setMetacritic] = useState<Number|null|undefined>(null);
 const navigate = useNavigate();
 useEffect(()=>{
     if(!isLoggedIn){
         navigate('/login');
     } 
 },[isLoggedIn]);
-
-function separerString(texteaseparer:string):string[]{
+function separerString(texteaseparer:String):String[]{
     return(texteaseparer.split(","));
 }
-async function AjouterJeu(nom:string,listePlateforme:string[],datesortie:Date,nombreCopieVendu:number,prix:number,devloppeur:string[],editeur:string[],genre:string[],ESRB:string|null,modejeu:string[],dureeJeux:number,disponible:boolean,metacritic:number|null){
-    axios.post('https://jeuxvideoapi-d4a9b0azcfgpd7h9.canadacentral-01.azurewebsites.net/api/jeuxvideo/ajouter',{
-        "jeuxvideo":{
-            "nom": nom,
-            "plateforme": listePlateforme,
-            "dateSortieinitial": datesortie,
-            "nombreCopieVendu": nombreCopieVendu,
-            "prix":prix,
-            "developpeur":devloppeur,
-            "editeur":editeur,
-            "genre":genre,
-            "ESRB":ESRB,
-            "modeDeJeu":modejeu,
-            "dureeJeux":dureeJeux,
-            "disponible":disponible,
-        }
-    },{
-        headers:{
-                Authorization: `Bearer ${token}`,
-            }
-    }).then(()=>{
-        navigate("/");
-    }).catch((error)=>{
-        console.log(error)
-    })};
-
     return(
         
     <Box sx={{ flexGrow: 1,backgroundColor:"white",width:'100%',height:'100%'}}>
@@ -83,14 +52,6 @@ async function AjouterJeu(nom:string,listePlateforme:string[],datesortie:Date,no
         >
             <TextField id="nom" required={true}  label="nom du jeux" value={nom} variant="outlined" onChange={(e) => setNom(e.target.value)}/>
            </Grid>
-            <Grid size={12}justifyContent="center"
-            alignItems="center"
-            sx={{width:'100%',
-                display: 'flex',
-                flexDirection: 'column'
-                }}>
-                    <TextField id="listePlateforme" required={true}  label="la liste des plateforme(mettre une virgule entre chaque plateforme)" multiline={true} value={platforme} variant="outlined" sx={{width:'50%'}} onChange={(e) => {setPlatforme(e.target.value),setListePlatforme(separerString(e.target.value))}}/>
-                </Grid>
            <Grid size={12}justifyContent="center"
             alignItems="center"
             sx={{width:'100%',
@@ -98,7 +59,7 @@ async function AjouterJeu(nom:string,listePlateforme:string[],datesortie:Date,no
                 flexDirection: 'column'
                 }}>
            
-            <DatePicker label="date de sortie"  value={datesortie} onChange={(e) => {if (e != null){setDateSortie(e)}}} format="YYYY-MM-DD"/>
+            <DatePicker label="date de sortie"  value={datesortie} onChange={(e) => setDateSortie(e)} format="YYYY-MM-DD"/>
           
            </Grid>
            <Grid size={12}justifyContent="center"
@@ -193,11 +154,7 @@ async function AjouterJeu(nom:string,listePlateforme:string[],datesortie:Date,no
                 display: 'flex',
                 flexDirection: 'column'
                 }}>
-                    <Button onClick={() =>{
-                       
-                        AjouterJeu(nom,listeplatforme,datesortie.toDate(),nombrecopie,prix,listeDev,listeEditeur,listeGenre,ESRB,listeModeJeu,dureeJeux,disponible,Metacritic);
-                  
-                        }} variant="contained">Ajouter</Button>
+                    <Button onClick={() =>{}} variant="contained">Modifier</Button>
                 </Grid>
            </Grid>
        
@@ -205,4 +162,4 @@ async function AjouterJeu(nom:string,listePlateforme:string[],datesortie:Date,no
         
     )
 }
-export default FormulaireAjout
+export default FormulaireModification
