@@ -36,7 +36,9 @@ function ListeJeux() {
                     <Button   onClick={()=>{navigate(`/UnJeux/${jeux._id}`)}}>
                         {jeux.nom}
                     </Button>
-
+                     <Button   onClick={()=>{navigate(`/modif/${jeux._id}`)}}>
+                        modif
+                    </Button>
                 </Grid>
             ))}
             
