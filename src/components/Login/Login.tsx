@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../context/loginContext";
 import { useNavigate } from 'react-router-dom';
 import { Button,  Grid, TextField } from "@mui/material";
+import { FormattedMessage } from "react-intl";
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -37,7 +38,7 @@ function Login() {
                 flexDirection: 'column'
                 }}
         >
-            <TextField id="email"  label="email" variant="outlined" onChange={(e) => setEmail(e.target.value)}/>
+            <TextField id="email"  label={<FormattedMessage id="login.email.label" defaultMessage="email"/>} variant="outlined" onChange={(e) => setEmail(e.target.value)}/>
            </Grid>
            <Grid size={12}justifyContent="center"
             alignItems="center"
@@ -46,7 +47,7 @@ function Login() {
                 flexDirection: 'column'
                 }}>
            
-            <TextField id="pass" label="password" variant="outlined" onChange={(e) => setPassword(e.target.value)}/>
+            <TextField id="pass" label={<FormattedMessage id="login.password.label" defaultMessage="mot de passe"/>} variant="outlined" onChange={(e) => setPassword(e.target.value)}/>
           
            </Grid>
            <Grid size={12}justifyContent="center"
@@ -58,7 +59,7 @@ function Login() {
             <Button 
                 variant="contained"
                 onClick={() => performLogin()}>
-                    se connecter
+                    <FormattedMessage id="login.button.texte" defaultMessage="connecter"/>
                 </Button>
            </Grid>
        </Grid> 

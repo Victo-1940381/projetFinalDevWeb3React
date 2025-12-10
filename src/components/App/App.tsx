@@ -11,10 +11,19 @@ import FormulaireAjout from '../FormulaireAjout'
 import FormulaireModification from '../FormulaireModification'
 import Genre from '../Genre'
 import Plateforme from '../Plateforme'
+import Francais from '../../lang/fr.json';
+import Anglais from '../../lang/en.json';
+import { IntlProvider } from 'react-intl';
+import { useState } from 'react'
 function App() {
+const [locale,setLocale] = useState('fr');
+const [messages,setMessages] = useState(Francais);
 
   return (
     <>
+    <IntlProvider locale={locale} messages={messages}>
+
+    
     <LocalizationProvider dateAdapter={AdapterDayjs}>
     <LoginProvider>
       <BrowserRouter>
@@ -33,6 +42,7 @@ function App() {
       </BrowserRouter>
     </LoginProvider>
     </LocalizationProvider>
+    </IntlProvider>
     </>
   )
 }
