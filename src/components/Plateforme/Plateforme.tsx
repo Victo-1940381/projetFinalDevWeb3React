@@ -4,6 +4,7 @@ import { LoginContext } from "../../context/loginContext";
 import { useNavigate } from "react-router-dom";
 import  { Grid, Typography, Button, TextField } from "@mui/material";
 import axios from "axios";
+import { FormattedMessage } from "react-intl";
 
 
 function Plateforme() {
@@ -37,8 +38,10 @@ function Plateforme() {
     
         <Grid container  justifyContent="center" alignItems="center" flexDirection="column" sx={{backgroundColor:"white",width:"100vw", textAlign:"center",height:"100vh"}}>
             <Grid size={12} >
-                  <TextField  label="la plateforme du jeu" value={plateforme} variant="outlined" onChange={(e)=>{setPlateforme(e.target.value)}}/>
-                    <Button onClick={()=>{chercherparplatforme(plateforme)}} variant="contained">rechercher</Button>
+                  <TextField  label={<FormattedMessage id="platforme.textfield.label"/>} value={plateforme} variant="outlined" onChange={(e)=>{setPlateforme(e.target.value)}}/>
+                    <Button onClick={()=>{chercherparplatforme(plateforme)}} variant="contained">
+                        <FormattedMessage id="platforme.button.recherche"/>
+                        </Button>
                 </Grid>
 
                 <Grid size={12}>

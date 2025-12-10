@@ -1,10 +1,11 @@
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { LoginContext } from "../../context/loginContext";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AppBar, Box, Button, Toolbar } from "@mui/material";
+import  { FormattedMessage } from "react-intl";
 
 interface NavItem{
-    label: string;
+    label: React.ReactNode
     path: string;
 }
 
@@ -28,10 +29,10 @@ return(
     <AppBar position="fixed" elevation={4}>
         <Toolbar sx={{justifyContent:'space-around'}}>
             <Box sx={{display:{xs: 'none', md:'flex'}, gap:1}}>
-            {navItems.map((item)=>{
+            {navItems.map((item,i)=>{
               return(
                 <button
-                key={item.label}
+                key={i}
                 onClick={()=>{
                     navigate(item.path);
                 }}
@@ -46,7 +47,7 @@ return(
         sx={{backgroundColor:"red", color:"white"}}
                 onClick={()=>logout()}
         >
-            déconnection
+            <FormattedMessage id="menu.button.connection"/>
         </Button>
         </Box>
         </Toolbar>

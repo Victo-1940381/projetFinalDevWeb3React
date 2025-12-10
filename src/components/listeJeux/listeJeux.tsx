@@ -4,6 +4,7 @@ import type { JeuxVideo } from "../../model/jeuxvideo";
 import { Button, ButtonGroup, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography } from "@mui/material";
 import { LoginContext } from "../../context/loginContext";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 function ListeJeux() {
     const [listejeux,setListejeux] = useState<JeuxVideo[]>([]);
@@ -51,7 +52,7 @@ function ListeJeux() {
         <Grid container  justifyContent="center" alignItems="center" flexDirection="column" sx={{backgroundColor:"white",width:"100vw", textAlign:"center",height:"100vh"}}>
             <Grid size={12}>
                    <Typography variant="h1"  sx={{color:"black"}}>
-                    Liste des Jeux vidéo
+                    <FormattedMessage id="listejeux.titre"/>
                    </Typography>
                 </Grid>
             {listejeux.map(jeux => (
@@ -61,10 +62,10 @@ function ListeJeux() {
                     </Button>
                     <ButtonGroup variant="contained">
                         <Button color="success"  onClick={()=>{navigate(`/modif/${jeux._id}`)}}>
-                        Modifier
+                       <FormattedMessage id="listejeux.button.modif"/>
                     </Button>
                     <Button color="error" onClick={()=>{setJeuxSupprime(jeux);if(jeuxSupprime != undefined){setPopup(true)}}}>
-                        Supprimer
+                       <FormattedMessage id="listejeux.button.delete"/>
                     </Button>
                     </ButtonGroup>
                       
@@ -86,7 +87,7 @@ function ListeJeux() {
                 </Dialog>
                  <Dialog open={popuperreur} onClose={() =>{setPopupErreur(false)}}>
                     <DialogTitle id="titre-popup">
-                        {"erreur en suprimant le jeu"}
+                        <FormattedMessage id="listejeux.popupdelete.titre"/>
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="texte-popup">
@@ -94,7 +95,7 @@ function ListeJeux() {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={() =>{setPopupErreur(false)}} autoFocus>ok</Button>
+                        <Button onClick={() =>{setPopupErreur(false)}} autoFocus><FormattedMessage id="listejeux.popupdelete.button"/></Button>
                     </DialogActions>
                 </Dialog>
         </Grid>

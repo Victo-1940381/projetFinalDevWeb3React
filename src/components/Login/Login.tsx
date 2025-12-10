@@ -38,7 +38,7 @@ function Login() {
                 flexDirection: 'column'
                 }}
         >
-            <TextField id="email"  label={<FormattedMessage id="login.email.label" defaultMessage="email"/>} variant="outlined" onChange={(e) => setEmail(e.target.value)}/>
+            <TextField id="email"  label={<FormattedMessage id="login.email.label" />} variant="outlined" onChange={(e) => setEmail(e.target.value)}/>
            </Grid>
            <Grid size={12}justifyContent="center"
             alignItems="center"
@@ -47,7 +47,7 @@ function Login() {
                 flexDirection: 'column'
                 }}>
            
-            <TextField id="pass" label={<FormattedMessage id="login.password.label" defaultMessage="mot de passe"/>} variant="outlined" onChange={(e) => setPassword(e.target.value)}/>
+            <TextField id="pass" label={<FormattedMessage id="login.password.label"/>} variant="outlined" onChange={(e) => setPassword(e.target.value)}/>
           
            </Grid>
            <Grid size={12}justifyContent="center"
@@ -59,7 +59,7 @@ function Login() {
             <Button 
                 variant="contained"
                 onClick={() => performLogin()}>
-                    <FormattedMessage id="login.button.texte" defaultMessage="connecter"/>
+                    <FormattedMessage id="login.button.texte"/>
                 </Button>
            </Grid>
        </Grid> 

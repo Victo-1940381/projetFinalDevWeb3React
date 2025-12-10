@@ -4,6 +4,7 @@ import { LoginContext } from "../../context/loginContext";
 import { useNavigate } from "react-router-dom";
 import  { Grid, Typography, Button, TextField } from "@mui/material";
 import axios from "axios";
+import { FormattedMessage } from "react-intl";
 
 
 function Genre () {
@@ -37,8 +38,10 @@ function Genre () {
     
         <Grid container  justifyContent="center" alignItems="center" flexDirection="column" sx={{backgroundColor:"white",width:"100vw", textAlign:"center",height:"100vh"}}>
             <Grid size={12} >
-                  <TextField  label="le genre du jeu" value={genre} variant="outlined" onChange={(e)=>{setGenre(e.target.value)}}/>
-                    <Button onClick={()=>{chercherpargenre(genre)}} variant="contained">rechercher</Button>
+                  <TextField  label={<FormattedMessage id="genre.textfield.label"/>} value={genre} variant="outlined" onChange={(e)=>{setGenre(e.target.value)}}/>
+                    <Button onClick={()=>{chercherpargenre(genre)}} variant="contained">
+                        <FormattedMessage id="genre.button.recherche"/>
+                        </Button>
                 </Grid>
 
                 <Grid size={12}>

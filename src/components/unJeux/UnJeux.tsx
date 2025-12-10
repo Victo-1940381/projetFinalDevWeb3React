@@ -4,13 +4,13 @@ import { LoginContext } from "../../context/loginContext";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Box, Button, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { FormattedDate, FormattedMessage } from "react-intl";
 
 function UnJeux (){
     const [jeux,setJeux] = useState<JeuxVideo>();
     const {isLoggedIn,token} = useContext(LoginContext);
     const navigate = useNavigate();
     const { id } = useParams();
-    //console.log(token);
     useEffect(()=>{
     if(!isLoggedIn){
         navigate('/login');
@@ -27,34 +27,30 @@ function UnJeux (){
     if(jeux ==null){
         return(
             <Typography variant="h1"  sx={{color:"black"}}>
-                    Aucun Jeux
+                    <FormattedMessage id="unjeux.jeuxnull.texte" defaultMessage="aucun jeux"/>
              </Typography>
         )
     }
     else{
         const dateapi: Date = new Date(jeux.dateSortieinitial);
-       const dateformater = dateapi.toLocaleDateString('fr-CA',{
-        year:'numeric',
-        month:'long',
-        day:'numeric',
-       });
+    
    return(
     <>
     <Box sx={{ flexGrow: 1,backgroundColor:"white",width:'100%',height:'100%'}}>
  
        <Grid container   justifyContent="top" paddingTop={10} >       
         <Button onClick={()=>{navigate(-1)}} sx={{backgroundColor:"red", color:"white"}}>
-                    Retour
+                    <FormattedMessage id="unjeux.buttonretour.texte"/>
                 </Button>
             <Grid size={12} alignItems="center" justifyContent="center"  sx={{textAlign:"center"}}>
                    <Typography variant="h1"  sx={{color:"black"}}>
-                   Information du jeu
+                   <FormattedMessage id="unjeux.titre"/>
                    </Typography>
             </Grid>
          
                 <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>
                    <Typography variant="h4"  sx={{color:"black"}}>
-                    nom du jeux:
+                    <FormattedMessage id="unjeux.nom"/>
                    </Typography>
                 </Grid>
                 <Grid size={6} alignItems="center" justifyContent="center"  sx={{textAlign:"left",border:"2px solid black"}} >
@@ -65,7 +61,7 @@ function UnJeux (){
                 </Grid>
                  <Grid size={6} alignItems="center" justifyContent="center"  sx={{textAlign:"right",border:"2px solid black"}}  >
                    <Typography variant="h4"  sx={{color:"black"}}>
-                    platformes:
+                    <FormattedMessage id="unjeux.platforme"/>
                    </Typography>
                    </Grid>
                    <Grid size={6} alignItems="center" justifyContent="center"  sx={{textAlign:"left",border:"2px solid black"}}  >
@@ -79,17 +75,20 @@ function UnJeux (){
                    </Grid>
                    <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>
                         <Typography variant="h4" sx={{color:"black"}}>
-                            Date de sortie initial: 
+                            <FormattedMessage id="unjeux.date"/>
                         </Typography>
                    </Grid>
                    <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"left",border:"2px solid black"}}>
                         <Typography variant="h4" sx={{color:"black"}}>
-                            {dateformater}
+                            <FormattedDate value={dateapi} 
+                            year='numeric' 
+                            month='long'
+                            day='numeric' />
                         </Typography>
                    </Grid>
                    <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>
                         <Typography variant="h4" sx={{color:"black"}}>
-                            nombre de copie vendu:
+                           <FormattedMessage id="unjeux.nbcopie"/>
                         </Typography>
                    </Grid>
                    <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"left",border:"2px solid black"}}>
@@ -99,7 +98,7 @@ function UnJeux (){
                    </Grid>
                    <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>
                         <Typography variant="h4" sx={{color:"black"}}>
-                            prix:
+                           <FormattedMessage id="unjeux.prix"/>
                         </Typography>
                    </Grid>
                    <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"left",border:"2px solid black"}}>
@@ -109,7 +108,7 @@ function UnJeux (){
                    </Grid>
                    <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>
                     <Typography variant="h4" sx={{color:"black"}}>
-                        developpeurs: 
+                        <FormattedMessage id="unjeux.dev"/>
                     </Typography>
                    </Grid>
                    <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"left",border:"2px solid black"}}>
@@ -123,7 +122,7 @@ function UnJeux (){
                    </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>
                         <Typography variant="h4" sx={{color:"black"}}>
-                            editeurs:
+                            <FormattedMessage id="unjeux.editeur"/>
                         </Typography>
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"left",border:"2px solid black"}}>
@@ -137,7 +136,7 @@ function UnJeux (){
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>
                         <Typography variant="h4" sx={{color:"black"}}>
-                           genres:
+                           <FormattedMessage id="unjeux.genre"/>
                         </Typography>
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"left",border:"2px solid black"}}>
@@ -151,7 +150,7 @@ function UnJeux (){
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>
                         <Typography variant="h4" sx={{color:"black"}}>
-                            Évaluation ESRB:
+                           <FormattedMessage id="unjeux.esrb"/>
                         </Typography>
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"left",border:"2px solid black"}}>
@@ -161,7 +160,7 @@ function UnJeux (){
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>
                         <Typography variant="h4" sx={{color:"black"}}>
-                            mode de jeux disponible:
+                           <FormattedMessage id="unjeux.modejeu"/>
                         </Typography>
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"left",border:"2px solid black"}}>
@@ -175,7 +174,7 @@ function UnJeux (){
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>
                         <Typography variant="h4" sx={{color:"black"}}>
-                            durée du jeux: 
+                            <FormattedMessage  id="unjeux.duree"/>
                         </Typography>
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"left",border:"2px solid black"}}>
@@ -185,13 +184,13 @@ function UnJeux (){
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>
                         <Typography variant="h4" sx={{color:"black"}}>
-                            le jeux est disponible: 
+                            <FormattedMessage id="unjeux.dispo.texte"/> 
                         </Typography>
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"left",border:"2px solid black"}}>
                         
                           <Typography variant="h4" sx={{color:"black"}}>
-                            {jeux.disponible? 'Vrai':'Faux'}
+                            {jeux.disponible? <FormattedMessage id="unjeux.dispo.vrai"/>:<FormattedMessage id="unjeux.dispo.faux" />}
                         </Typography>  
                         
                         
@@ -199,7 +198,7 @@ function UnJeux (){
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>
                         <Typography variant="h4" sx={{color:"black"}}>
-                            note métacritic:
+                            <FormattedMessage id="unjeux.meta"/>
                         </Typography>
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"left",border:"2px solid black"}}>
