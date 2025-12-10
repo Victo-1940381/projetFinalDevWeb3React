@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../context/loginContext";
 import { useNavigate, useParams } from "react-router-dom";
-import { Box, Button, FormControlLabel,Grid, TextField, Typography, Checkbox } from "@mui/material";
+import { Box, Button, FormControlLabel,Grid, TextField, Typography, Checkbox, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
 import axios from "axios";
@@ -9,6 +9,8 @@ import axios from "axios";
 function FormulaireModification(){
 const {isLoggedIn,token} = useContext(LoginContext);
 const { id } = useParams();
+const [messageErreur,setMessageErreur] = useState("");
+const [popupErreur,setPopupErreur] = useState(false);
 const [nom, setNom] = useState("");
 const [datesortie,setDateSortie] = useState<Dayjs>(dayjs);
 const [nombrecopie,setNombreCopie] = useState(0);
@@ -74,14 +76,55 @@ function assemberString(arrayaassembler:string[]):string{
     return string;
     
 }
-
-    return(
+async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie:Date,nombreCopieVendu:number,prix:number,devloppeur:string[],editeur:string[],genre:string[],ESRB:string|null,modejeu:string[],dureeJeux:number,disponible:boolean,metacritic:number|null){
+    axios.post('https://jeuxvideoapi-d4a9b0azcfgpd7h9.canadacentral-01.azurewebsites.net/api/jeuxvideo/modifier',{
+        "jeuxvideo":{
+            "id": id,
+            "nom": nom,
+            "plateforme": listePlateforme,
+            "dateSortieinitial": datesortie,
+            "nombreCopieVendu": nombreCopieVendu,
+            "prix":prix,
+            "developpeur":devloppeur,
+            "editeur":editeur,
+            "genre":genre,
+            "ESRB":ESRB,
+            "modeDeJeu":modejeu,
+            "dureeJeux":dureeJeux,
+            "disponible":disponible,
+        }
+    },{
+        headers:{
+                Authorization: `Bearer ${token}`,
+            }
+    }).then(()=>{
+        navigate("/");
+    }).catch((error)=>{
+        console.log(error)
+        setMessageErreur(error.response.data.message);
+        setPopupErreur(true);
+    })};
+    if(id == undefined){
+        return(
+            <Box sx={{flexGrow:1,backgroundColor:"white",width:'100%',height:'100%'}}>
+                 <Grid container justifyContent="center" paddingTop={10} flexDirection="column" spacing={5} sx={{backgroundColor:"white",minHeight:'100vh',minWidth:'100vw',textAlign:"center"}}>
+                    <Grid size={12}>
+                        <Typography variant="h1" sx={{color:"black"}}>
+                            erreur en allant cherché le jeu
+                        </Typography>
+                    </Grid>
+                 </Grid>
+            </Box>
+        )
+    }
+    else{
+       return(
         
     <Box sx={{ flexGrow: 1,backgroundColor:"white",width:'100%',height:'100%'}}>
         <Grid container justifyContent="center" paddingTop={10} flexDirection="column" spacing={5} sx={{backgroundColor:"white",minHeight:'100vh',minWidth:'100vw',textAlign:"center"}}>
              <Grid size={12} >
                    <Typography variant="h1"  sx={{color:"black"}}>
-                    Ajouter un jeux vidéo
+                    Modifier un jeux vidéo
                    </Typography>
                 </Grid>
         <Grid size={12} justifyContent="center"
@@ -203,12 +246,27 @@ function assemberString(arrayaassembler:string[]):string{
                 display: 'flex',
                 flexDirection: 'column'
                 }}>
-                    <Button onClick={() =>{}} variant="contained">Modifier</Button>
+                    <Button onClick={() =>{ModifJeu(id,nom,listeplatforme,datesortie.toDate(),nombrecopie,prix,listeDev,listeEditeur,listeGenre,ESRB,listeModeJeu,dureeJeux,disponible,Metacritic)}} variant="contained">Modifier</Button>
                 </Grid>
+                   <Dialog open={popupErreur} onClose={() =>{setPopupErreur(false)}}>
+                    <DialogTitle id="titre-popup">
+                        {"Erreur en modifiant le jeu"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="texte-popup">
+                            {messageErreur}
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() =>{setPopupErreur(false)}} autoFocus>Ok</Button>
+                    </DialogActions>
+                </Dialog>
            </Grid>
        
        </Box>
         
-    )
+    )  
+    }
+   
 }
 export default FormulaireModification
