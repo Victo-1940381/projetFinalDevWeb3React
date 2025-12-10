@@ -77,7 +77,7 @@ function assemberString(arrayaassembler:string[]):string{
     
 }
 async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie:Date,nombreCopieVendu:number,prix:number,devloppeur:string[],editeur:string[],genre:string[],ESRB:string|null,modejeu:string[],dureeJeux:number,disponible:boolean,metacritic:number|null){
-    axios.post('https://jeuxvideoapi-d4a9b0azcfgpd7h9.canadacentral-01.azurewebsites.net/api/jeuxvideo/modifier',{
+    axios.put('https://jeuxvideoapi-d4a9b0azcfgpd7h9.canadacentral-01.azurewebsites.net/api/jeuxvideo/modifier',{
         "jeuxvideo":{
             "id": id,
             "nom": nom,

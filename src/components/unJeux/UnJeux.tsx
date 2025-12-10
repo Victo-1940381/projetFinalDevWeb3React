@@ -43,7 +43,7 @@ function UnJeux (){
     <Box sx={{ flexGrow: 1,backgroundColor:"white",width:'100%',height:'100%'}}>
  
        <Grid container   justifyContent="top" paddingTop={10} >       
-        <Button onClick={()=>{navigate('/')}} sx={{backgroundColor:"red", color:"white"}}>
+        <Button onClick={()=>{navigate(-1)}} sx={{backgroundColor:"red", color:"white"}}>
                     Retour
                 </Button>
             <Grid size={12} alignItems="center" justifyContent="center"  sx={{textAlign:"center"}}>

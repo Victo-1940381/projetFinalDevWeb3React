@@ -22,7 +22,8 @@ function ListeJeux() {
                 Authorization: `Bearer ${token}`,
             }
         })
-        .then((response)=> setListejeux(response.data.jeuxvideos));
+        .then((response)=> {setListejeux(response.data.jeuxvideos),listejeux.sort((a,b)=>a.nom.localeCompare(b.nom))});
+
     }
    },[isLoggedIn]);
    async function supprimerJeu(id:string){
@@ -40,9 +41,11 @@ function ListeJeux() {
                 Authorization: `Bearer ${token}`,
             }}).then((reponse)=>{
                 setListejeux(reponse.data.jeuxvideos)
+                listejeux.sort((a,b)=>a.nom.localeCompare(b.nom))
             })
         })
    }
+
    return (
     
         <Grid container  justifyContent="center" alignItems="center" flexDirection="column" sx={{backgroundColor:"white",width:"100vw", textAlign:"center",height:"100vh"}}>

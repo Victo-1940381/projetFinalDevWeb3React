@@ -11,7 +11,7 @@ interface NavItem{
 const navItems: NavItem[] = [
     {label:"tous",path:'/'},
     {label:"recherché par genre",path:'/genre'},
-    {label:"recherché par platforme",path:'/platforme'},
+    {label:"recherché par platforme",path:'/plateforme'},
     {label:"ajouter un jeux",path:'/ajout'}
 ]
 function Menu(){
