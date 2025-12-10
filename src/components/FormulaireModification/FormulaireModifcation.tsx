@@ -92,6 +92,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
             "modeDeJeu":modejeu,
             "dureeJeux":dureeJeux,
             "disponible":disponible,
+            "Metacritic":metacritic,
         }
     },{
         headers:{

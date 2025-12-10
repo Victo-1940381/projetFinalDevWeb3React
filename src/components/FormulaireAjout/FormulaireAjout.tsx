@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { Box, Button, FormControlLabel,Grid, TextField, Typography, Checkbox, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
-import type { JeuxVideo } from "../../model/jeuxvideo";
 import axios from "axios";
 
 function FormulaireAjout(){
@@ -55,6 +54,7 @@ async function AjouterJeu(nom:string,listePlateforme:string[],datesortie:Date,no
             "modeDeJeu":modejeu,
             "dureeJeux":dureeJeux,
             "disponible":disponible,
+            "Metacritic":metacritic,
         }
     },{
         headers:{
