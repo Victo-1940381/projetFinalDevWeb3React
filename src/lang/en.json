@@ -73,7 +73,8 @@
     "genre.titre.echec":"no games",
     "platforme.titre.reussi":"list of video games",
     "platforme.titre.echec":"no games",
-    "menu.switchlangue":"fr/en"
+    "menu.switchlangue":"fr/en",
+    "unjeux.duree.resultat":"{dureeJeux} hours"
 
    
 

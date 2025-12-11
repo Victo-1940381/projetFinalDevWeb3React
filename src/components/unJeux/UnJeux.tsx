@@ -179,7 +179,7 @@ function UnJeux (){
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"left",border:"2px solid black"}}>
                         <Typography variant="h4" sx={{color:"black"}}>
-                            {jeux.dureeJeux.toString()} heures
+                            <FormattedMessage id="unjeux.duree.resultat" values={{dureeJeux:jeux.dureeJeux.toString()}}/>
                         </Typography>
                     </Grid>
                     <Grid size={6} alignItems="center" justifyContent="center" sx={{textAlign:"right",border:"2px solid black"}}>

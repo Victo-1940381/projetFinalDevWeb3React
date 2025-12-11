@@ -73,6 +73,7 @@
     "genre.titre.echec":"Aucun jeux",
     "platforme.titre.reussi":"Liste des jeux vidéo",
     "platforme.titre.echec":"Aucun jeux",
-    "menu.switchlangue":"fr/en"
+    "menu.switchlangue":"fr/en",
+    "unjeux.duree.resultat":"{dureeJeux} heures"
 
 }
