@@ -6,7 +6,7 @@
     "unjeux.buttonretour.texte":"Back",
     "unjeux.titre":"Informations of the game",
     "unjeux.nom":"Name:",
-    "unjeux.platforme":"Plaforms:",
+    "unjeux.platforme":"Platforms:",
     "unjeux.date":"Initial release date:",
     "unjeux.nbcopie":"Number of copies solds:",
     "unjeux.prix":"Price:",
@@ -72,7 +72,8 @@
     "genre.titre.reussi":"list of video games",
     "genre.titre.echec":"no games",
     "platforme.titre.reussi":"list of video games",
-    "platforme.titre.echec":"no games"
+    "platforme.titre.echec":"no games",
+    "menu.switchlangue":"fr/en"
 
    
 

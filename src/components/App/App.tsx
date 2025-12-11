@@ -5,26 +5,21 @@ import Menu from '../Menu'
 import Login from '../Login'
 import ListeJeux from '../listeJeux'
 import UnJeux from '../unJeux'
-import { LocalizationProvider } from '@mui/x-date-pickers'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import FormulaireAjout from '../FormulaireAjout'
 import FormulaireModification from '../FormulaireModification'
 import Genre from '../Genre'
 import Plateforme from '../Plateforme'
-import Francais from '../../lang/fr.json';
-//import Anglais from '../../lang/en.json';
-import { IntlProvider } from 'react-intl';
-import { useState } from 'react'
+
+import LangueProvider from '../../context/langueContext'
 function App() {
-const [locale] = useState('fr');
-const [messages] = useState(Francais);
+
 
   return (
     <>
-    <IntlProvider locale={locale} messages={messages}>
+    
 
     
-    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={locale}>
+    <LangueProvider>
     <LoginProvider>
       <BrowserRouter>
       <Routes>
@@ -41,8 +36,7 @@ const [messages] = useState(Francais);
       </Routes>
       </BrowserRouter>
     </LoginProvider>
-    </LocalizationProvider>
-    </IntlProvider>
+    </LangueProvider>
     </>
   )
 }

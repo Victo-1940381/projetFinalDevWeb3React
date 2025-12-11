@@ -72,7 +72,7 @@
     "genre.titre.reussi":"Liste des jeux vidéo",
     "genre.titre.echec":"Aucun jeux",
     "platforme.titre.reussi":"Liste des jeux vidéo",
-    "platforme.titre.echec":"Aucun jeux"
-
+    "platforme.titre.echec":"Aucun jeux",
+    "menu.switchlangue":"fr/en"
 
 }

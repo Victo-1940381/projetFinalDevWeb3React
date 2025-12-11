@@ -3,6 +3,7 @@ import { LoginContext } from "../../context/loginContext";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AppBar, Box, Button, Toolbar } from "@mui/material";
 import  { FormattedMessage } from "react-intl";
+import { LangueContext } from "../../context/langueContext";
 
 interface NavItem{
     label: React.ReactNode
@@ -17,7 +18,7 @@ const navItems: NavItem[] = [
 ]
 function Menu(){
 const {isLoggedIn, logout} = useContext(LoginContext);
-
+const {switchlangue} = useContext(LangueContext);
 const navigate = useNavigate();
 useEffect(() =>{
     if (!isLoggedIn) {
@@ -42,12 +43,19 @@ return(
               )
             })}
         </Box>
-        <Box sx={{display:'flex',justifyContent:'flex-end'}}>
+        <Box  sx={{display:'flex',justifyContent:'flex-end'}}>
         <Button
         sx={{backgroundColor:"red", color:"white"}}
                 onClick={()=>logout()}
         >
             <FormattedMessage id="menu.button.connection"/>
+        </Button>
+        
+         <Button
+        sx={{backgroundColor:"pink", color:"black" }}
+                onClick={()=>switchlangue()}
+        >
+            <FormattedMessage id="menu.switchlangue"/>
         </Button>
         </Box>
         </Toolbar>
