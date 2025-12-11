@@ -5,6 +5,7 @@ import { Box, Button, FormControlLabel,Grid, TextField, Typography, Checkbox, Di
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
 import axios from "axios";
+import { FormattedMessage } from "react-intl";
 
 function FormulaireModification(){
 const {isLoggedIn,token} = useContext(LoginContext);
@@ -111,7 +112,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                  <Grid container justifyContent="center" paddingTop={10} flexDirection="column" spacing={5} sx={{backgroundColor:"white",minHeight:'100vh',minWidth:'100vw',textAlign:"center"}}>
                     <Grid size={12}>
                         <Typography variant="h1" sx={{color:"black"}}>
-                            erreur en allant cherché le jeu
+                            <FormattedMessage id="formModif.erreur"/>
                         </Typography>
                     </Grid>
                  </Grid>
@@ -125,7 +126,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
         <Grid container justifyContent="center" paddingTop={10} flexDirection="column" spacing={5} sx={{backgroundColor:"white",minHeight:'100vh',minWidth:'100vw',textAlign:"center"}}>
              <Grid size={12} >
                    <Typography variant="h1"  sx={{color:"black"}}>
-                    Modifier un jeux vidéo
+                    <FormattedMessage id="formModif.titre"/>
                    </Typography>
                 </Grid>
         <Grid size={12} justifyContent="center"
@@ -135,7 +136,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 flexDirection: 'column'
                 }}
         >
-            <TextField id="nom" required={true}  label="nom du jeux" value={nom} variant="outlined" onChange={(e) => setNom(e.target.value)}/>
+            <TextField id="nom" required={true}  label={<FormattedMessage id="formModif.label.nom"/>} value={nom} variant="outlined" onChange={(e) => setNom(e.target.value)}/>
            </Grid>
            <Grid size={12}justifyContent="center"
             alignItems="center"
@@ -143,7 +144,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 display: 'flex',
                 flexDirection: 'column'
                 }}>
-                    <TextField id="listePlateforme" required={true}  label="la liste des plateforme(mettre une virgule entre chaque plateforme)" multiline={true} value={platforme} variant="outlined" sx={{width:'50%'}} onChange={(e) => {setPlatforme(e.target.value),setListePlatforme(separerString(e.target.value))}}/>
+                    <TextField id="listePlateforme" required={true}  label={<FormattedMessage id="formModif.label.platformes"/>} multiline={true} value={platforme} variant="outlined" sx={{width:'50%'}} onChange={(e) => {setPlatforme(e.target.value),setListePlatforme(separerString(e.target.value))}}/>
                 </Grid>
            <Grid size={12}justifyContent="center"
             alignItems="center"
@@ -152,7 +153,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 flexDirection: 'column'
                 }}>
            
-            <DatePicker label="date de sortie"  value={datesortie} onChange={(e) =>{if (e != null){setDateSortie(e)}}} format="YYYY-MM-DD"/>
+            <DatePicker label={<FormattedMessage id="formModif.label.date"/>} value={datesortie} onChange={(e) =>{if (e != null){setDateSortie(e)}}} format="YYYY-MM-DD"/>
           
            </Grid>
            <Grid size={12}justifyContent="center"
@@ -161,7 +162,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 display: 'flex',
                 flexDirection: 'column'
                 }}>
-                    <TextField id="nombreCopieVendu" required={true}  label="le nombre de copie vendu"   type="number" slotProps={{htmlInput:{min:0}}} value={nombrecopie} variant="outlined" onChange={(e) =>setNombreCopie(parseInt(e.target.value))}/>
+                    <TextField id="nombreCopieVendu" required={true}  label={<FormattedMessage id="formModif.label.nbcopie"/>}   type="number" slotProps={{htmlInput:{min:0}}} value={nombrecopie} variant="outlined" onChange={(e) =>setNombreCopie(parseInt(e.target.value))}/>
                 </Grid>
                  <Grid size={12}justifyContent="center"
             alignItems="center"
@@ -169,7 +170,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 display: 'flex',
                 flexDirection: 'column'
                 }}>
-                    <TextField id="prix" required={true}  label="le prix du jeu"  type="number" slotProps={{htmlInput:{min:0}}} value={prix} variant="outlined" onChange={(e) =>setPrix(parseFloat(e.target.value))}/>
+                    <TextField id="prix" required={true}  label={<FormattedMessage id="formModif.label.prix"/>}  type="number" slotProps={{htmlInput:{min:0}}} value={prix} variant="outlined" onChange={(e) =>setPrix(parseFloat(e.target.value))}/>
                 </Grid>
             <Grid size={12}justifyContent="center"
             alignItems="center"
@@ -177,7 +178,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 display: 'flex',
                 flexDirection: 'column'
                 }}>
-                    <TextField id="listeDev" required={true} label="la liste des devloppeur(mettre une virgule entre chaque developpeur)" multiline={true} value={dev} variant="outlined" sx={{width:'50%'}} onChange={(e) => {setDev(e.target.value),setListeDev(separerString(e.target.value))}}/>
+                    <TextField id="listeDev" required={true} label={<FormattedMessage id="formModif.label.dev"/>} multiline={true} value={dev} variant="outlined" sx={{width:'50%'}} onChange={(e) => {setDev(e.target.value),setListeDev(separerString(e.target.value))}}/>
                 </Grid>
                  <Grid size={12}justifyContent="center"
             alignItems="center"
@@ -185,7 +186,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 display: 'flex',
                 flexDirection: 'column'
                 }}>
-                    <TextField id="listeEditeur" required={true}  label="la liste des editeur(mettre une virgule entre chaque editeur)" multiline={true} value={editeur} variant="outlined" sx={{width:'50%'}} onChange={(e) => {setEditeur(e.target.value),setListeediteur(separerString(e.target.value))}}/>
+                    <TextField id="listeEditeur" required={true}  label={<FormattedMessage id="formModif.label.editeur"/>} multiline={true} value={editeur} variant="outlined" sx={{width:'50%'}} onChange={(e) => {setEditeur(e.target.value),setListeediteur(separerString(e.target.value))}}/>
                 </Grid>
                    <Grid size={12}justifyContent="center"
             alignItems="center"
@@ -193,7 +194,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 display: 'flex',
                 flexDirection: 'column'
                 }}>
-                    <TextField id="listeGenre" required={true}  label="la liste des genres(mettre une virgule entre chaque genre)" multiline={true} value={genre} variant="outlined" sx={{width:'50%'}} onChange={(e) => {setGenre(e.target.value),setListeGenre(separerString(e.target.value))}}/>
+                    <TextField id="listeGenre" required={true}  label={<FormattedMessage id="formModif.label.genre"/>} multiline={true} value={genre} variant="outlined" sx={{width:'50%'}} onChange={(e) => {setGenre(e.target.value),setListeGenre(separerString(e.target.value))}}/>
                 </Grid>
                 <Grid size={12} justifyContent="center"
             alignItems="center"
@@ -202,7 +203,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 flexDirection: 'column'
                 }}
         >
-            <TextField id="ESRB"  label="la note ESRB du jeu" value={ESRB} variant="outlined" onChange={(e) => setESRB(e.target.value)}/>
+            <TextField id="ESRB"  label={<FormattedMessage id="formModif.label.esrb"/>} value={ESRB} variant="outlined" onChange={(e) => setESRB(e.target.value)}/>
            </Grid>
                  <Grid size={12}justifyContent="center"
             alignItems="center"
@@ -210,7 +211,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 display: 'flex',
                 flexDirection: 'column'
                 }}>
-                    <TextField id="listeModeJeu" required={true}  label="la liste des mode de jeu du jeu(mettre une virgule entre chaque mode)" multiline={true} value={modeDeJeu} variant="outlined" sx={{width:'50%'}} onChange={(e) => {setmodeDeJeu(e.target.value),setListeModeJeu(separerString(e.target.value))}}/>
+                    <TextField id="listeModeJeu" required={true}  label={<FormattedMessage id="formModif.label.modejeu"/>} multiline={true} value={modeDeJeu} variant="outlined" sx={{width:'50%'}} onChange={(e) => {setmodeDeJeu(e.target.value),setListeModeJeu(separerString(e.target.value))}}/>
                 </Grid>
 
                     <Grid size={12}justifyContent="center"
@@ -219,7 +220,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 display: 'flex',
                 flexDirection: 'column'
                 }}>
-                    <TextField id="dureeDuJeu" required={true}  label="la duree du jeu en heure"   type="number" slotProps={{htmlInput:{min:0}}} value={dureeJeux} variant="outlined" onChange={(e) =>setDureeJeux(parseFloat(e.target.value))}/>
+                    <TextField id="dureeDuJeu" required={true}  label={<FormattedMessage id="formModif.label.duree"/>}   type="number" slotProps={{htmlInput:{min:0}}} value={dureeJeux} variant="outlined" onChange={(e) =>setDureeJeux(parseFloat(e.target.value))}/>
                 </Grid>
           
                 <Grid size={12}justifyContent="center"
@@ -228,7 +229,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 display: 'flex',
                 flexDirection: 'column'
                 }}>
-                    <TextField id="noteMetacritic"  label="la note metacritic du jeu"   type="number" slotProps={{htmlInput:{min:0, max:100}}} value={Metacritic} variant="outlined" sx={{width:175}} onChange={(e) =>setMetacritic(parseInt(e.target.value))}/>
+                    <TextField id="noteMetacritic"  label={<FormattedMessage id="formModif.label.meta"/>}   type="number" slotProps={{htmlInput:{min:0, max:100}}} value={Metacritic} variant="outlined" sx={{width:175}} onChange={(e) =>setMetacritic(parseInt(e.target.value))}/>
                 </Grid>
 
                 <Grid size={12} justifyContent="center"
@@ -238,7 +239,7 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 flexDirection: 'column'
                 }}>
                     
-                        <FormControlLabel required={true} control={<Checkbox checked={disponible} onChange={(e)=>{setDisponible(e.target.checked)}} />} sx={{color:"black"}} label="disponible"/>
+                        <FormControlLabel required={true} control={<Checkbox checked={disponible} onChange={(e)=>{setDisponible(e.target.checked)}} />} sx={{color:"black"}} label={<FormattedMessage id="formModif.label.dispo"/>}/>
                     
                 </Grid>
                 <Grid size={12} justifyContent="center"
@@ -247,11 +248,13 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                 display: 'flex',
                 flexDirection: 'column'
                 }}>
-                    <Button onClick={() =>{ModifJeu(id,nom,listeplatforme,datesortie.toDate(),nombrecopie,prix,listeDev,listeEditeur,listeGenre,ESRB,listeModeJeu,dureeJeux,disponible,Metacritic)}} variant="contained">Modifier</Button>
+                    <Button onClick={() =>{ModifJeu(id,nom,listeplatforme,datesortie.toDate(),nombrecopie,prix,listeDev,listeEditeur,listeGenre,ESRB,listeModeJeu,dureeJeux,disponible,Metacritic)}} variant="contained">
+                        <FormattedMessage id="formModif.button"/>
+                    </Button>
                 </Grid>
                    <Dialog open={popupErreur} onClose={() =>{setPopupErreur(false)}}>
                     <DialogTitle id="titre-popup">
-                        {"Erreur en modifiant le jeu"}
+                        {<FormattedMessage id="formModif.popup.titre"/>}
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="texte-popup">
@@ -259,7 +262,9 @@ async function ModifJeu(id:string,nom:string,listePlateforme:string[],datesortie
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={() =>{setPopupErreur(false)}} autoFocus>Ok</Button>
+                        <Button onClick={() =>{setPopupErreur(false)}} autoFocus>
+                            <FormattedMessage id="formModif.popup.button"/>
+                        </Button>
                     </DialogActions>
                 </Dialog>
            </Grid>

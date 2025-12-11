@@ -10,7 +10,7 @@ import { FormattedMessage } from "react-intl";
 function Plateforme() {
     const [plateforme,setPlateforme] = useState("");
     const [listejeux,setListejeux] = useState<JeuxVideo[]>([]);
-    const [texte,setTexte] = useState("Aucun jeux");
+    const [texte,setTexte] = useState<React.ReactNode>(<FormattedMessage id="platforme.titre.echec"/>);
     const {isLoggedIn,token} = useContext(LoginContext);
     const navigate = useNavigate();
 
@@ -25,11 +25,11 @@ function Plateforme() {
                 Authorization: `Bearer ${token}`,
             }}).then((response)=>{
 
-                setTexte("Liste des jeux vidéo");
+                setTexte(<FormattedMessage id="platforme.titre.reussi"/>);
                 setListejeux(response.data.jeuxvideos);
             })
             .catch(()=>{
-                setTexte("Aucun jeux");
+                setTexte(<FormattedMessage id="platforme.titre.echec"/>);
                 setListejeux([]);
             })
    }

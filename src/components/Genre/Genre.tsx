@@ -10,7 +10,7 @@ import { FormattedMessage } from "react-intl";
 function Genre () {
     const [genre,setGenre] = useState("");
     const [listejeux,setListejeux] = useState<JeuxVideo[]>([]);
-    const [texte,setTexte] = useState("Aucun jeux");
+    const [texte,setTexte] = useState<React.ReactNode>(<FormattedMessage id="genre.titre.echec"/>);
     const {isLoggedIn,token} = useContext(LoginContext);
     const navigate = useNavigate();
 
@@ -25,11 +25,11 @@ function Genre () {
                 Authorization: `Bearer ${token}`,
             }}).then((response)=>{
 
-                setTexte("Liste des jeux vidéo");
+                setTexte(<FormattedMessage id="genre.titre.reussi"/>);
                 setListejeux(response.data.jeuxvideos);
             })
             .catch(()=>{
-                setTexte("Aucun jeux");
+                setTexte(<FormattedMessage id="genre.titre.echec"/>);
                 setListejeux([]);
             })
    }
