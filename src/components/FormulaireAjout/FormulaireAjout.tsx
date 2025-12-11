@@ -5,6 +5,7 @@ import { Box, Button, FormControlLabel,Grid, TextField, Typography, Checkbox, Di
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
 import axios from "axios";
+import { FormattedMessage } from "react-intl";
 
 function FormulaireAjout(){
 const {isLoggedIn,token} = useContext(LoginContext);
@@ -80,24 +81,24 @@ async function AjouterJeu(nom:string,listePlateforme:string[],datesortie:Date,no
         <Grid container justifyContent="center" paddingTop={10} flexDirection="column" spacing={5} sx={{textAlign:"center",maxWidth:'100vw'}}>
              <Grid size={12} >
                    <Typography variant="h1"  sx={{color:"black"}}>
-                    Ajouter un jeux vidéo
+                    <FormattedMessage id="formajout.titre"/>
                    </Typography>
                 </Grid>
         <Grid size={12} justifyContent="center"
             alignItems="center"
         >
-            <TextField id="nom" required={true}  label="nom du jeux" value={nom} variant="outlined" onChange={(e) => setNom(e.target.value)}/>
+            <TextField id="nom" required={true}  label= {<FormattedMessage id="formajout.label.nom"/>} value={nom} variant="outlined" onChange={(e) => setNom(e.target.value)}/>
            </Grid>
             <Grid size={12}justifyContent="center"
             alignItems="center"
            >
-                    <TextField id="listePlateforme" required={true}  label="la liste des plateforme(mettre une virgule entre chaque plateforme)" multiline={true} value={platforme} variant="outlined" sx={{width:800}} onChange={(e) => {setPlatforme(e.target.value),setListePlatforme(separerString(e.target.value))}}/>
+                    <TextField id="listePlateforme" required={true}  label={<FormattedMessage id="formajout.label.platformes"/>} multiline={true} value={platforme} variant="outlined" sx={{width:800}} onChange={(e) => {setPlatforme(e.target.value),setListePlatforme(separerString(e.target.value))}}/>
                 </Grid>
            <Grid size={12}justifyContent="center"
             alignItems="center"
             >
            
-            <DatePicker label="date de sortie"  value={datesortie} onChange={(e) => {if (e != null){setDateSortie(e)}}} format="YYYY-MM-DD"/>
+            <DatePicker label={<FormattedMessage id="formajout.label.date"/>}  value={datesortie} onChange={(e) => {if (e != null){setDateSortie(e)}}} format="YYYY-MM-DD"/>
           
            </Grid>
            <Grid size={12}justifyContent="center"

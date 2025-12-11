@@ -10,10 +10,10 @@ interface NavItem{
 }
 
 const navItems: NavItem[] = [
-    {label:"tous",path:'/'},
-    {label:"recherché par genre",path:'/genre'},
-    {label:"recherché par platforme",path:'/plateforme'},
-    {label:"ajouter un jeux",path:'/ajout'}
+    {label:<FormattedMessage id="menu.label.tous"/>,path:'/'},
+    {label:<FormattedMessage id="menu.label.genre"/>,path:'/genre'},
+    {label:<FormattedMessage id="menu.label.platforme"/>,path:'/plateforme'},
+    {label:<FormattedMessage id="menu.label.ajout"/>,path:'/ajout'}
 ]
 function Menu(){
 const {isLoggedIn, logout} = useContext(LoginContext);

@@ -26,8 +26,17 @@
     "listejeux.popupdelete.titre":"erreur en supprimant le jeu",
     "listejeux.popupdelete.button":"ok",
     "menu.button.connection":"Déconnection",
+    "menu.label.tous":"tous",
+    "menu.label.genre":"recherché par genre",
+    "menu.label.platforme":"recherché par plateforme",
+    "menu.label.ajout":"ajouter un jeu",
     "genre.textfield.label":"Le genre du jeu",
     "genre.button.recherche":"Rechercher",
     "platforme.textfield.label":"La plateforme du jeu",
-    "platforme.button.recherche":"Rechercher"
+    "platforme.button.recherche":"Rechercher",
+    "formajout.titre":"Ajouter un jeux vidéo",
+    "formajout.label.nom":"nom",
+    "formajout.label.platformes":"la liste des plateformes(mettre une virgule entre chaque plateforme)",
+    "formajout.label.date":"date de sortie"
+
 }

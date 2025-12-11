@@ -21,14 +21,22 @@
     "unjeux.dispo.faux":"False",
     "unjeux.meta":"Metacritic rating:",
     "listejeux.titre":"List of video games",
-     "listejeux.button.modif":"Edit",
+    "listejeux.button.modif":"Edit",
     "listejeux.button.delete":"Delete",
     "listejeux.popupdelete.titre":"error when deleting the game",
     "listejeux.popupdelete.button":"ok",
     "menu.button.connection":"Logout",
+    "menu.label.tous":"all",
+    "menu.label.genre":"search by genre",
+    "menu.label.platforme":"search by platform",
+    "menu.label.ajout":"add a game",
     "genre.textfield.label":"the genre of the game",
     "genre.button.recherche":"Search",
     "platforme.textfield.label":"the platform of the game",
-    "platforme.button.recherche":"Search"
+    "platforme.button.recherche":"Search",
+    "formajout.titre":"Add a video game",
+    "formajout.label.nom":"name",
+    "formajout.label.platformes":"the list of platform(put a comma between each platform)",
+    "formajout.label.date":"release date"
 
 }

@@ -24,7 +24,7 @@ const [messages] = useState(Francais);
     <IntlProvider locale={locale} messages={messages}>
 
     
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={locale}>
     <LoginProvider>
       <BrowserRouter>
       <Routes>
