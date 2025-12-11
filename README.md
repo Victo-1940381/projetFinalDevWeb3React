@@ -6,5 +6,5 @@ url de l'api publié:[https://witty-island-0304c2b0f.3.azurestaticapps.net](http
 4:faire npm run test pour effectuer les test<br>
 <b>description sommaire</b><br>
 c'est une application qui permet de gerer des jeux video (ajout,recherché,modifier et supprimer)<br>
-<b>email</b>:admin2000@gmail.com
+<b>email</b>:admin2000@gmail.com<br>
 <b>pass</b>:admin1234
